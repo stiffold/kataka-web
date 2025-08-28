@@ -2,134 +2,108 @@ import React from 'react';
 
 const Courses: React.FC = () => {
   return (
-    <div className="py-20 bg-gray-50">
+    <div className="py-24 bg-gradient-to-br from-gray-50 via-white to-primary-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-20">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
             Předporodní kurzy
           </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-8"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Zde najdete kurzy, které pro vás připravujeme.
+          </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg p-8 shadow-sm mb-8">
-            <div className="text-center mb-8">
-              <div className="text-6xl mb-4">📚</div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                Informace o veškerých plánovaných kurzech
-              </h2>
-            </div>
-            
-            <div className="space-y-6 text-lg text-gray-600">
-              <p>
-                Pravidelně pořádám předporodní kurzy pro nastávající rodiče. Kurzy jsou zaměřené na praktické dovednosti 
-                a poskytují komplexní informace o porodu, kojení a péči o novorozence.
-              </p>
-              <p>
-                Všechny kurzy jsou vedeny v přátelské atmosféře a jsou přizpůsobeny potřebám účastníků.
-              </p>
-            </div>
-          </div>
-
-          {/* Aktuální kurzy */}
-          <div className="bg-white rounded-lg p-8 shadow-sm mb-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Aktuální kurzy</h3>
-            <div className="space-y-6">
-              <div className="border-l-4 border-primary-600 pl-6">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Předporodní příprava - Kompletní kurz</h4>
-                <p className="text-gray-600 mb-2">
-                  <strong>Délka:</strong> 2x120 minut
-                </p>
-                <p className="text-gray-600 mb-2">
-                  <strong>Cena:</strong> 4000 Kč
-                </p>
-                <p className="text-gray-600 mb-4">
-                  Komplexní příprava na porod včetně praktických cvičení, relaxačních technik a informací o kojení.
-                </p>
-                <div className="bg-primary-50 rounded-lg p-4">
-                  <h5 className="font-semibold text-gray-900 mb-2">Co se naučíte:</h5>
-                  <ul className="text-gray-700 space-y-1">
-                    <li>• Relaxační techniky a masáže</li>
-                    <li>• Nácvik úlevových poloh</li>
-                    <li>• Informace o průběhu porodu</li>
-                    <li>• Příprava na kojení</li>
-                    <li>• Praktické ukázky</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="border-l-4 border-secondary-600 pl-6">
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">Předporodní setkání</h4>
-                <p className="text-gray-600 mb-2">
-                  <strong>Délka:</strong> 120 minut
-                </p>
-                <p className="text-gray-600 mb-2">
-                  <strong>Cena:</strong> 2000 Kč
-                </p>
-                <p className="text-gray-600 mb-4">
-                  Pro ženy, které nechtějí kompletní předporodní přípravu nebo již prošly předporodním kurzem.
-                </p>
-                <div className="bg-secondary-50 rounded-lg p-4">
-                  <h5 className="font-semibold text-gray-900 mb-2">Obsah setkání:</h5>
-                  <ul className="text-gray-700 space-y-1">
-                    <li>• Seznámení a vzájemné poznání</li>
-                    <li>• Zjištění vašich potřeb a přání</li>
-                    <li>• Odborné rady a doporučení</li>
-                    <li>• Možnost dotazů</li>
-                  </ul>
+        <div className="max-w-6xl mx-auto">
+          {/* Plakát kurzů */}
+          <div className="group mb-20">
+            <div className="bg-white rounded-3xl p-12 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <h3 className="text-3xl font-semibold text-gray-900 mb-12 text-center">Aktuální kurzy</h3>
+              
+              <div className="flex justify-center">
+                <div className="group relative">
+                  <div className="relative overflow-hidden rounded-2xl shadow-soft-lg group-hover:shadow-soft-xl transition-all duration-300 transform group-hover:-translate-y-1">
+                    <img 
+                      src="/images/3.png" 
+                      alt="Plakát předporodního kurzu"
+                      className="w-full max-w-2xl h-auto object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Registrace na kurzy */}
-          <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-              Registrace na kurzy
-            </h3>
-            <div className="text-center space-y-4">
-              <p className="text-lg text-gray-700">
-                Máte zájem o některý z našich kurzů? Kontaktujte mě pro více informací a rezervaci místa.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/kontakt"
-                  className="bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
-                >
-                  Kontaktovat
-                </a>
-                <a
-                  href="tel:736722952"
-                  className="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors"
-                >
-                  Zavolat
-                </a>
+          <div className="group mb-16">
+            <div className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-12 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2">
+              <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+                Registrace na kurzy
+              </h3>
+              <div className="text-center space-y-6">
+                <p className="text-xl text-gray-700 leading-relaxed">
+                  Máte zájem o některý z našich kurzů? Přihlaste se přímo přes stránky našeho kurzu.
+                </p>
+                <div className="flex justify-center">
+                  <a
+                    href="https://www.vlnylasky.cz/prihlaska/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-4 rounded-2xl font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-soft hover:shadow-soft-lg transform hover:-translate-y-1"
+                  >
+                    Přihlásit se na kurz
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Informace o kurzech */}
-          <div className="mt-8 bg-white rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Důležité informace
-            </h3>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-start">
-                <span className="text-primary-600 mr-2">•</span>
-                Kurzy probíhají v malých skupinách pro osobnější přístup
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary-600 mr-2">•</span>
-                Vítáni jsou i partneři
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary-600 mr-2">•</span>
-                Všechny materiály jsou v ceně kurzu
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary-600 mr-2">•</span>
-                Možnost individuálních konzultací po kurzu
-              </li>
-            </ul>
+          <div className="group">
+            <div className="bg-white rounded-3xl p-10 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+                Důležité informace
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <ul className="space-y-4 text-gray-600">
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <svg className="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    Kurzy probíhají v malých skupinách pro osobnější přístup
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <svg className="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    Vítáni jsou i partneři
+                  </li>
+                </ul>
+                <ul className="space-y-4 text-gray-600">
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <svg className="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    Všechny materiály jsou v ceně kurzu
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <svg className="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    Možnost individuálních konzultací po kurzu
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
