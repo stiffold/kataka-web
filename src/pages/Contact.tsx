@@ -134,7 +134,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500">Číslo účtu</p>
-                      <p className="text-lg font-medium text-gray-900 bg-gray-800 px-2 py-1 rounded text-sm text-white">
+                      <p className="text-lg font-medium text-gray-900 font-mono">
                         131-39520257/0100
                       </p>
                     </div>

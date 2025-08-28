@@ -28,28 +28,6 @@ const Hero: React.FC = () => {
               </span>
             </h1>
           </div>
-          
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Porod dítěte vnímám jako ten největší zázrak, který můžeme v životě zažít. 
-            Nabízím vám pomocnou ruku při přípravě na porod, podporu během porodu a pomoc s kojením.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <a
-              href="/kontakt"
-              className="group bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-4 rounded-2xl font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-soft-lg hover:shadow-soft-xl transform hover:-translate-y-1"
-            >
-              Domluvit konzultaci
-              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-            </a>
-            <a
-              href="/sluzby"
-              className="group border-2 border-primary-600 text-primary-600 px-10 py-4 rounded-2xl font-semibold hover:bg-primary-600 hover:text-white transition-all duration-300 shadow-soft hover:shadow-soft-lg transform hover:-translate-y-1"
-            >
-              Zjistit více
-              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
-            </a>
-          </div>
         </div>
 
         {/* Photo */}
@@ -71,6 +49,26 @@ const Hero: React.FC = () => {
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary-200 rounded-full opacity-60 group-hover:scale-110 transition-transform duration-300"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-secondary-200 rounded-full opacity-60 group-hover:scale-110 transition-transform duration-300"></div>
             </div>
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="text-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <a
+              href="/kontakt"
+              className="group bg-gradient-to-r from-primary-600 to-primary-700 text-white px-10 py-4 rounded-2xl font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-soft-lg hover:shadow-soft-xl transform hover:-translate-y-1"
+            >
+              Domluvit konzultaci
+              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </a>
+            <a
+              href="/sluzby"
+              className="group border-2 border-primary-600 text-primary-600 px-10 py-4 rounded-2xl font-semibold hover:bg-primary-600 hover:text-white transition-all duration-300 shadow-soft hover:shadow-soft-lg transform hover:-translate-y-1"
+            >
+              Zjistit více
+              <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </a>
           </div>
         </div>
         
