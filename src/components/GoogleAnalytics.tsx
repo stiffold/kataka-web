@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react';
-import ReactGA from 'react-ga4';
 import { useLocation } from 'react-router-dom';
 
 interface GoogleAnalyticsProps {
   measurementId: string;
+}
+
+// Deklarace gtag funkce
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+    dataLayer: any[];
+  }
 }
 
 const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
@@ -16,48 +23,37 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
       return;
     }
 
-    try {
-      // Inicializace Google Analytics
-      ReactGA.initialize(measurementId, {
-        gaOptions: {
-          siteSpeedSampleRate: 100
-        }
-      });
-
-      // Odeslání první pageview
-      ReactGA.send({ hitType: 'pageview', page: location.pathname });
-      
-      console.log('✅ Google Analytics initialized with ID:', measurementId);
-      console.log('📍 Current page:', location.pathname);
-      
-      // Test event
-      ReactGA.event({
-        category: 'App',
-        action: 'Initialized',
-        label: 'Google Analytics Setup'
-      });
-      
-    } catch (error) {
-      console.error('❌ Google Analytics initialization error:', error);
+    // Kontrola, jestli je gtag dostupný
+    if (typeof window.gtag === 'undefined') {
+      console.error('❌ Google Analytics gtag není načtený');
+      return;
     }
+
+    console.log('✅ Google Analytics ready with ID:', measurementId);
+    console.log('📍 Current page:', location.pathname);
+
   }, [measurementId]);
 
   useEffect(() => {
     // Sledování změn stránek
-    if (measurementId && measurementId !== 'G-XXXXXXXXXX' && measurementId.length >= 10) {
+    if (measurementId && measurementId !== 'G-XXXXXXXXXX' && measurementId.length >= 10 && window.gtag) {
       try {
         const fullPath = location.pathname + location.search;
-        ReactGA.send({ 
-          hitType: 'pageview', 
-          page: fullPath 
+        
+        // Odeslání pageview
+        window.gtag('config', measurementId, {
+          page_title: document.title,
+          page_location: window.location.origin + fullPath,
+          page_path: fullPath
         });
+        
         console.log('📊 Pageview sent:', fullPath);
         
-        // Test event pro každou stránku
-        ReactGA.event({
-          category: 'Navigation',
-          action: 'Page View',
-          label: fullPath
+        // Test event
+        window.gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.origin + fullPath,
+          page_path: fullPath
         });
         
       } catch (error) {

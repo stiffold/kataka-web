@@ -22,10 +22,12 @@ const Header: React.FC = () => {
             <Link to="/" className="flex-shrink-0 group">
               <div className="flex items-center space-x-3 group-hover:scale-105 transition-transform duration-300">
                 {/* Icon */}
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-soft group-hover:shadow-soft-lg transition-all duration-300">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+                <div className="w-24 h-24 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src="/images/8-100x100.png" 
+                    alt="Logo" 
+                    className="w-24 h-24 object-contain"
+                  />
                 </div>
                 
                 {/* Text */}
