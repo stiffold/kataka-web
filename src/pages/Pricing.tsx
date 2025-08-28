@@ -87,14 +87,6 @@ const Pricing: React.FC = () => {
 
             <div className="group">
               <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Doprovod k porodu</h3>
-                <div className="text-4xl font-bold text-primary-600 mb-4">5000,- Kč</div>
-                <p className="text-gray-600 mb-4">Cena se ani při dlouhém porodu nemění</p>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Porodní balíček</h3>
                 <div className="text-4xl font-bold text-primary-600 mb-6">12500,- Kč</div>
                 <ul className="text-gray-600 space-y-3">
@@ -113,31 +105,6 @@ const Pricing: React.FC = () => {
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
                     Poporodní péče 1x120 min
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Poporodní péče</h3>
-                <div className="text-4xl font-bold text-primary-600 mb-6">1500,- Kč</div>
-                <ul className="text-gray-600 space-y-3">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    Délka - 120 min.
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    Osobní návštěva
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    Konzultace
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    Laktační poradenství
                   </li>
                 </ul>
               </div>
@@ -173,13 +140,6 @@ const Pricing: React.FC = () => {
                     Pomoc s tvorbou porodního přání
                   </li>
                 </ul>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Online/tel. konzultace</h3>
-                <div className="text-4xl font-bold text-primary-600 mb-4">350 Kč,- / 30 min.</div>
               </div>
             </div>
 
@@ -230,6 +190,46 @@ const Pricing: React.FC = () => {
                     Pohotovost držím 24/7
                   </li>
                 </ul>
+              </div>
+            </div>
+
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Doprovod k porodu</h3>
+                <div className="text-4xl font-bold text-primary-600 mb-4">5000,- Kč</div>
+                <p className="text-gray-600 mb-4">Cena se ani při dlouhém porodu nemění</p>
+              </div>
+            </div>
+
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Poporodní péče</h3>
+                <div className="text-4xl font-bold text-primary-600 mb-6">1500,- Kč</div>
+                <ul className="text-gray-600 space-y-3">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                    Délka - 120 min.
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                    Osobní návštěva
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                    Konzultace
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
+                    Laktační poradenství
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Online/tel. konzultace</h3>
+                <div className="text-4xl font-bold text-primary-600 mb-4">350 Kč,- / 30 min.</div>
               </div>
             </div>
 
