@@ -37,7 +37,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <div className="py-24 bg-gradient-to-br from-gray-50 via-white to-primary-50">
+    <div className="py-24 bg-gradient-to-br from-primary-100 via-white to-secondary-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
