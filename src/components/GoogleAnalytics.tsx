@@ -23,14 +23,49 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
       return;
     }
 
-    // Kontrola, jestli je gtag dostupný
-    if (typeof window.gtag === 'undefined') {
-      console.error('❌ Google Analytics gtag není načtený');
-      return;
-    }
+    // Funkce pro kontrolu, jestli je gtag načtený
+    const checkGtag = () => {
+      if (typeof window.gtag === 'undefined') {
+        console.warn('⚠️ Google Analytics gtag není načtený, čekám...');
+        setTimeout(checkGtag, 1000); // Zkusím znovu za 1 sekundu
+        return false;
+      }
+      return true;
+    };
 
-    console.log('✅ Google Analytics ready with ID:', measurementId);
-    console.log('📍 Current page:', location.pathname);
+    // Počkáme na načtení gtag
+    const initGA = () => {
+      if (checkGtag()) {
+        try {
+          // Odeslání první pageview
+          window.gtag('config', measurementId, {
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: location.pathname
+          });
+          
+          console.log('✅ Google Analytics initialized with ID:', measurementId);
+          console.log('📍 Current page:', location.pathname);
+          
+          // Test event
+          window.gtag('event', 'page_view', {
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: location.pathname
+          });
+          
+        } catch (error) {
+          console.error('❌ Google Analytics initialization error:', error);
+        }
+      }
+    };
+
+    // Spustíme inicializaci po načtení stránky
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGA);
+    } else {
+      initGA();
+    }
 
   }, [measurementId]);
 

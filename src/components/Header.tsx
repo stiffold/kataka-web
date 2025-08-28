@@ -135,75 +135,89 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-4 space-y-1 sm:px-3 bg-white border-t border-gray-100">
-              <Link 
-                to="/" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Úvod
-              </Link>
-              <Link 
-                to="/o-mne" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/o-mne') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                O mně
-              </Link>
-              <Link 
-                to="/sluzby" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/sluzby') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Služby
-              </Link>
-              <Link 
-                to="/cenik" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/cenik') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Ceník
-              </Link>
-              <Link 
-                to="/podpurna-skupinka" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/podpurna-skupinka') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Podpůrná skupinka
-              </Link>
-              <Link 
-                to="/kurzy" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/kurzy') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Kurzy
-              </Link>
-              <Link 
-                to="/kontakt" 
-                className={`block px-3 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
-                  isActive('/kontakt') ? 'text-primary-600 bg-primary-50' : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Kontakt
-              </Link>
-            </div>
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="px-4 pt-3 pb-4 space-y-1 bg-white/95 backdrop-blur-sm border-t border-gray-100/50 shadow-soft">
+            <Link 
+              to="/" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Úvod
+            </Link>
+            <Link 
+              to="/o-mne" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/o-mne') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              O mně
+            </Link>
+            <Link 
+              to="/sluzby" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/sluzby') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Služby
+            </Link>
+            <Link 
+              to="/cenik" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/cenik') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Ceník
+            </Link>
+            <Link 
+              to="/podpurna-skupinka" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/podpurna-skupinka') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Podpůrná skupinka
+            </Link>
+            <Link 
+              to="/kurzy" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/kurzy') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Kurzy
+            </Link>
+            <Link 
+              to="/kontakt" 
+              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+                isActive('/kontakt') 
+                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
+                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Kontakt
+            </Link>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
