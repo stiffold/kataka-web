@@ -5,10 +5,22 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMenuButtonClicked, setIsMenuButtonClicked] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
+    setIsMenuButtonClicked(true);
     setIsMenuOpen(!isMenuOpen);
+    
+    // Reset flag po 1 sekundě
+    setTimeout(() => {
+      setIsMenuButtonClicked(false);
+    }, 1000);
+  };
+
+  // Zavři menu při kliknutí na odkaz
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const isActive = (path: string) => {
@@ -17,31 +29,46 @@ const Header: React.FC = () => {
 
   // Scroll tracking pro skrývání/zobrazování headeru
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      // Zruš předchozí timeout
+      clearTimeout(timeoutId);
       
-      // Skryj header při scrollování dolů, zobraz při scrollování nahoru
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrollování dolů a jsme více než 100px od vrcholu
-        setIsHeaderVisible(false);
-        // Zavři mobilní menu při scrollování dolů
-        if (isMenuOpen) {
-          setIsMenuOpen(false);
+      timeoutId = setTimeout(() => {
+        const currentScrollY = window.scrollY;
+        
+        // Skryj header při scrollování dolů, zobraz při scrollování nahoru
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrollování dolů a jsme více než 100px od vrcholu
+          setIsHeaderVisible(false);
+          // Zavři mobilní menu pouze při velmi výrazném scrollování dolů a pokud není otevřené
+          if (isMenuOpen && currentScrollY > lastScrollY + 300 && !isMenuButtonClicked) {
+            setIsMenuOpen(false);
+          }
+        } else if (currentScrollY < lastScrollY) {
+          // Scrollování nahoru - zobraz header, ale nezavírej menu
+          setIsHeaderVisible(true);
         }
-      } else if (currentScrollY < lastScrollY) {
-        // Scrollování nahoru
-        setIsHeaderVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+        
+        setLastScrollY(currentScrollY);
+      }, 50); // 50ms debounce
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeoutId);
     };
   }, [lastScrollY, isMenuOpen]);
+
+  // Reset menu button flag když se menu zavře
+  useEffect(() => {
+    if (!isMenuOpen) {
+      setIsMenuButtonClicked(false);
+    }
+  }, [isMenuOpen]);
 
   return (
     <header className={`bg-white/95 backdrop-blur-sm shadow-soft sticky top-0 z-50 border-b border-gray-100 transition-transform duration-300 ${
@@ -178,7 +205,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Úvod
             </Link>
@@ -189,7 +216,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               O mně
             </Link>
@@ -200,7 +227,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Služby
             </Link>
@@ -211,7 +238,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Ceník
             </Link>
@@ -222,7 +249,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Podpůrná skupinka
             </Link>
@@ -233,7 +260,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Kurzy
             </Link>
@@ -244,7 +271,7 @@ const Header: React.FC = () => {
                   ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
                   : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMenu}
             >
               Kontakt
             </Link>
