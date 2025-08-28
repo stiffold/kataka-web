@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
           <div className="mb-8">
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
               Kateřina Stará
-              <span className="block text-primary-600 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+              <span className="block text-primary-600 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent pb-2">
                 Porodní dula & laktační poradkyně
               </span>
             </h1>

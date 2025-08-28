@@ -9,9 +9,6 @@ const Pricing: React.FC = () => {
             Ceník
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Transparentní ceny pro všechny služby. První konzultace je zdarma.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -59,15 +56,15 @@ const Pricing: React.FC = () => {
 
             <div className="group">
               <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Cestovné</h3>
-                <div className="text-4xl font-bold text-primary-600 mb-4">9 Kč/km</div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Online/tel. konzultace</h3>
+                <div className="text-4xl font-bold text-primary-600 mb-4">700 Kč,- / 60 min.</div>
               </div>
             </div>
 
             <div className="group">
               <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Online/tel. konzultace</h3>
-                <div className="text-4xl font-bold text-primary-600 mb-4">700 Kč,- / 60 min.</div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Cestovné</h3>
+                <div className="text-4xl font-bold text-primary-600 mb-4">9 Kč/km</div>
               </div>
             </div>
           </div>
@@ -213,13 +210,6 @@ const Pricing: React.FC = () => {
 
             <div className="group">
               <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Cestovné</h3>
-                <div className="text-4xl font-bold text-primary-600 mb-4">9 Kč/km</div>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Pohotovost k porodu</h3>
                 <div className="text-4xl font-bold text-primary-600 mb-6">3500,- Kč</div>
                 <ul className="text-gray-600 space-y-3">
@@ -240,6 +230,13 @@ const Pricing: React.FC = () => {
                     Pohotovost držím 24/7
                   </li>
                 </ul>
+              </div>
+            </div>
+
+            <div className="group">
+              <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Cestovné</h3>
+                <div className="text-4xl font-bold text-primary-600 mb-4">9 Kč/km</div>
               </div>
             </div>
           </div>

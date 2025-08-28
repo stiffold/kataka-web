@@ -155,8 +155,8 @@ const Services: React.FC = () => {
           <section className="group">
             <div className="bg-white rounded-3xl p-12 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <h2 className="text-4xl font-bold text-gray-900 mb-8">POPORODNÍ NÁVŠTĚVA</h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Návštěva probíhá v pohodlí Vašeho domova a trvá 1,5 hod. Na poporodní návštěvě Vám poskytnu rady a pomoc v těchto oblastech:
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Návštěva probíhá v pohodlí Vašeho domova a trvá 120 min. Na poporodní návštěvě Vám poskytnu rady a pomoc v těchto oblastech:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {postpartumServices.map((service, index) => (

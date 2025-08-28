@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-3xl font-bold text-white mb-6">
@@ -43,26 +43,26 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-semibold text-white mb-6">Služby</h4>
+            <h4 className="text-xl font-semibold text-white mb-6">Navigace</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/sluzby" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
-                  Prenatální příprava
+                <Link to="/" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
+                  Úvod
+                </Link>
+              </li>
+              <li>
+                <Link to="/o-mne" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
+                  O mně
                 </Link>
               </li>
               <li>
                 <Link to="/sluzby" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
-                  Podpora při porodu
+                  Služby
                 </Link>
               </li>
               <li>
-                <Link to="/sluzby" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
-                  Laktační poradenství
-                </Link>
-              </li>
-              <li>
-                <Link to="/sluzby" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
-                  Poporodní péče
+                <Link to="/cenik" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
+                  Ceník
                 </Link>
               </li>
               <li>
@@ -73,6 +73,11 @@ const Footer: React.FC = () => {
               <li>
                 <Link to="/kurzy" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
                   Kurzy
+                </Link>
+              </li>
+              <li>
+                <Link to="/kontakt" className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 transform inline-block">
+                  Kontakt
                 </Link>
               </li>
             </ul>
