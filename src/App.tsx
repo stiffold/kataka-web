@@ -18,7 +18,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gradient-to-br from-primary-100 via-white to-secondary-100">
         {/* Google Analytics - nahraďte YOUR_MEASUREMENT_ID vaším skutečným ID */}
-        <GoogleAnalytics measurementId="G-VCSS8B6PYR" />
+        <GoogleAnalytics measurementId="G-8PHKSPNTEE" />
         
         {/* Scroll to top při změně stránky */}
         <ScrollToTop />
