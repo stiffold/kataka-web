@@ -126,7 +126,7 @@ const Services: React.FC = () => {
             <div className="bg-white rounded-3xl p-12 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <h2 className="text-4xl font-bold text-gray-900 mb-8">PŘEDPORODNÍ PŘÍPRAVA</h2>
               <p className="text-xl text-gray-600 mb-8">
-                Probíhá ve 2 schůzkách, každá trvá cca 2 hodiny. V balíčku PREMIUM je navíc příprava na kojení (1,5 hod.).
+                Probíhá ve 2 schůzkách, každá trvá cca 2 hodiny. V porodním balíčku je navíc příprava na kojení (1,5 hod.).
               </p>
               <p className="text-xl text-gray-600 mb-8">
                 Témata přípravy:

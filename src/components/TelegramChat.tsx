@@ -7,7 +7,7 @@ interface TelegramChatProps {
 
 const TelegramChat: React.FC<TelegramChatProps> = ({ telegramUsername, phoneNumber }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(true);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   const handleTelegramClick = () => {
     // Otevře Telegram s vaším uživatelem

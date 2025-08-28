@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import TelegramChat from './components/TelegramChat';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -18,6 +19,9 @@ function App() {
       <div className="min-h-screen bg-gray-50">
         {/* Google Analytics - nahraďte YOUR_MEASUREMENT_ID vaším skutečným ID */}
         <GoogleAnalytics measurementId="G-VCSS8B6PYR" />
+        
+        {/* Scroll to top při změně stránky */}
+        <ScrollToTop />
         
         <Header />
         <main>
