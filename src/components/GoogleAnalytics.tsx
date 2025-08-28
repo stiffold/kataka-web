@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
+import ReactGA from 'react-ga4';
 import { useLocation } from 'react-router-dom';
 
 interface GoogleAnalyticsProps {
   measurementId: string;
-}
-
-// Deklarace gtag funkce
-declare global {
-  interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
-  }
 }
 
 const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
@@ -23,73 +16,48 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({ measurementId }) => {
       return;
     }
 
-    // Funkce pro kontrolu, jestli je gtag načtený
-    const checkGtag = () => {
-      if (typeof window.gtag === 'undefined') {
-        console.warn('⚠️ Google Analytics gtag není načtený, čekám...');
-        setTimeout(checkGtag, 1000); // Zkusím znovu za 1 sekundu
-        return false;
-      }
-      return true;
-    };
-
-    // Počkáme na načtení gtag
-    const initGA = () => {
-      if (checkGtag()) {
-        try {
-          // Odeslání první pageview
-          window.gtag('config', measurementId, {
-            page_title: document.title,
-            page_location: window.location.href,
-            page_path: location.pathname
-          });
-          
-          console.log('✅ Google Analytics initialized with ID:', measurementId);
-          console.log('📍 Current page:', location.pathname);
-          
-          // Test event
-          window.gtag('event', 'page_view', {
-            page_title: document.title,
-            page_location: window.location.href,
-            page_path: location.pathname
-          });
-          
-        } catch (error) {
-          console.error('❌ Google Analytics initialization error:', error);
+    try {
+      // Inicializace Google Analytics 4
+      ReactGA.initialize(measurementId, {
+        gaOptions: {
+          siteSpeedSampleRate: 100
         }
-      }
-    };
+      });
 
-    // Spustíme inicializaci po načtení stránky
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initGA);
-    } else {
-      initGA();
+      console.log('✅ Google Analytics 4 initialized with ID:', measurementId);
+      
+      // Odeslání první pageview
+      ReactGA.send({ hitType: 'pageview', page: location.pathname });
+      console.log('📊 Initial pageview sent:', location.pathname);
+      
+    } catch (error) {
+      console.error('❌ Google Analytics initialization error:', error);
     }
-
   }, [measurementId]);
 
   useEffect(() => {
-    // Sledování změn stránek
-    if (measurementId && measurementId !== 'G-XXXXXXXXXX' && measurementId.length >= 10 && window.gtag) {
+    // Sledování změn stránek při navigaci
+    if (measurementId && measurementId !== 'G-XXXXXXXXXX' && measurementId.length >= 10) {
       try {
         const fullPath = location.pathname + location.search;
         
-        // Odeslání pageview
-        window.gtag('config', measurementId, {
-          page_title: document.title,
-          page_location: window.location.origin + fullPath,
-          page_path: fullPath
+        // Odeslání pageview pro každou změnu stránky
+        ReactGA.send({ 
+          hitType: 'pageview', 
+          page: fullPath 
         });
         
         console.log('📊 Pageview sent:', fullPath);
         
-        // Test event
-        window.gtag('event', 'page_view', {
-          page_title: document.title,
-          page_location: window.location.origin + fullPath,
-          page_path: fullPath
+        // Odeslání custom event pro lepší tracking
+        ReactGA.event({
+          category: 'Navigation',
+          action: 'Page View',
+          label: fullPath,
+          value: 1
         });
+        
+        console.log('🎯 Custom event sent for:', fullPath);
         
       } catch (error) {
         console.error('❌ Google Analytics pageview error:', error);

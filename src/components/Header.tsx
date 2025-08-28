@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -13,8 +15,38 @@ const Header: React.FC = () => {
     return location.pathname === path;
   };
 
+  // Scroll tracking pro skrývání/zobrazování headeru
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Skryj header při scrollování dolů, zobraz při scrollování nahoru
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrollování dolů a jsme více než 100px od vrcholu
+        setIsHeaderVisible(false);
+        // Zavři mobilní menu při scrollování dolů
+        if (isMenuOpen) {
+          setIsMenuOpen(false);
+        }
+      } else if (currentScrollY < lastScrollY) {
+        // Scrollování nahoru
+        setIsHeaderVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY, isMenuOpen]);
+
   return (
-    <header className="bg-white/95 backdrop-blur-sm shadow-soft sticky top-0 z-50 border-b border-gray-100">
+    <header className={`bg-white/95 backdrop-blur-sm shadow-soft sticky top-0 z-50 border-b border-gray-100 transition-transform duration-300 ${
+      isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
