@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
               {/* Main photo with soft shadow and rounded corners */}
               <div className="relative overflow-hidden rounded-3xl shadow-soft-lg group-hover:shadow-soft-xl transition-all duration-300 transform group-hover:-translate-y-2">
                 <img 
-                  src="/images/1.png" 
+                  src="/images/9.png" 
                   alt="Těhotná žena v přírodě - symbol nového života a mateřství"
                   className="w-96 h-96 object-cover"
                 />
