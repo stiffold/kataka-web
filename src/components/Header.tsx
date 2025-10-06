@@ -194,10 +194,9 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="px-4 pt-3 pb-4 space-y-1 bg-white/95 backdrop-blur-sm border-t border-gray-100/50 shadow-soft">
+        {isMenuOpen && (
+          <div className="md:hidden fixed top-[100px] left-0 right-0 max-h-[80vh] overflow-y-auto bg-white/95 backdrop-blur-sm shadow-soft z-50">
+            <div className="px-4 pt-3 pb-4 space-y-2">
             <Link 
               to="/" 
               className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
@@ -275,8 +274,9 @@ const Header: React.FC = () => {
             >
               Kontakt
             </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </header>
   );
