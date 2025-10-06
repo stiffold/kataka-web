@@ -1,63 +1,18 @@
-import https from 'https';
 
-// Telegram bot token a chat ID - nahraďte vašimi údaji
-const TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';
-const TELEGRAM_CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
+// index.mjs
+import https from 'node:https';
 
-// Funkce pro odeslání zprávy do Telegramu
-async function sendTelegramMessage(message) {
-  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-  
-  const data = JSON.stringify({
-    chat_id: TELEGRAM_CHAT_ID,
-    text: message,
-    parse_mode: 'HTML'
-  });
+const TELEGRAM_BOT_TOKEN = '8217066315:AAE-xOLrFjTsg8BPwMJDZ1S-nr_-4UdxdiY';
+const TELEGRAM_CHAT_ID = '-1002913359484'; // nebo '@tvuj_kanal'
 
-  return new Promise((resolve, reject) => {
-    const urlObj = new URL(url);
-    const options = {
-      hostname: urlObj.hostname,
-      port: 443,
-      path: urlObj.pathname,
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length
-      }
-    };
-
-    const req = https.request(options, (res) => {
-      let responseData = '';
-      res.on('data', (chunk) => {
-        responseData += chunk;
-      });
-      res.on('end', () => {
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-          resolve(JSON.parse(responseData));
-        } else {
-          reject(new Error(`Telegram API error: ${res.statusCode} - ${responseData}`));
-        }
-      });
-    });
-
-    req.on('error', (error) => {
-      reject(new Error(`Request failed: ${error.message}`));
-    });
-
-    req.write(data);
-    req.end();
-  });
-}
-
-// Funkce pro získání lokace z IP adresy
+// Funkce pro získání lokace z IP adresy pomocí https modulu
 async function getLocationFromIP(sourceIP) {
   try {
-    // Použít ipapi.co pro geolokaci
+    // Použít ipapi.co pro geolokaci (opravený endpoint)
     console.log(`Trying ipapi.co for IP: ${sourceIP}`);
     const locationData = await makeHttpsRequest(`https://ipapi.co/${sourceIP}/json/`);
     const data = JSON.parse(locationData);
-    
+
     if (data.country_name && data.city) {
       console.log(`ipapi.co success: ${data.country_name}, ${data.city}`);
       return `${data.country_name}: ${data.city}`;
@@ -73,11 +28,11 @@ async function getLocationFromIP(sourceIP) {
   }
 
   try {
-    // Fallback na api.db-ip.com
+    // Fallback na api.db-ip.com (spolehlivý free tier)
     console.log(`Trying api.db-ip.com for IP: ${sourceIP}`);
     const locationData = await makeHttpsRequest(`https://api.db-ip.com/v2/free/${sourceIP}`);
     const data = JSON.parse(locationData);
-    
+
     if (data.countryName && data.city) {
       console.log(`api.db-ip.com success: ${data.countryName}, ${data.city}`);
       return `${data.countryName}: ${data.city}`;
@@ -90,11 +45,11 @@ async function getLocationFromIP(sourceIP) {
   }
 
   try {
-    // Fallback na ipinfo.io
+    // Fallback na ipinfo.io (původní spolehlivá služba)
     console.log(`Trying ipinfo.io for IP: ${sourceIP}`);
     const locationData = await makeHttpsRequest(`https://ipinfo.io/${sourceIP}/json`);
     const data = JSON.parse(locationData);
-    
+
     if (data.country && data.city) {
       console.log(`ipinfo.io success: ${data.country}, ${data.city}`);
       return `${data.country}: ${data.city}`;
@@ -107,11 +62,12 @@ async function getLocationFromIP(sourceIP) {
   }
 
   try {
-    // Další fallback na ip-api.com
+    // Další fallback na ip-api.com (opravený s lepším error handlingem)
     console.log(`Trying ip-api.com for IP: ${sourceIP}`);
     const locationData = await makeHttpsRequest(`https://ip-api.com/json/${sourceIP}?fields=country,city,countryCode`);
     const data = JSON.parse(locationData);
-    
+
+    // Kontrola, že data nejsou prázdná
     if (data && Object.keys(data).length > 0 && data.country && data.city) {
       console.log(`ip-api.com success: ${data.country}, ${data.city}`);
       return `${data.country}: ${data.city}`;
@@ -125,12 +81,31 @@ async function getLocationFromIP(sourceIP) {
     console.log('⚠️ ip-api.com failed:', error.message);
   }
 
+  // Poslední fallback - zkusit získat alespoň zemi z IP adresy
+  try {
+    console.log(`Trying to determine country from IP range for: ${sourceIP}`);
+    const ipParts = sourceIP.split('.');
+    if (ipParts.length === 4) {
+      // Jednoduchá heuristika pro běžné IP rozsahy
+      const firstOctet = parseInt(ipParts[0]);
+      if (firstOctet >= 1 && firstOctet <= 126) {
+        return 'US: North America';
+      } else if (firstOctet >= 128 && firstOctet <= 191) {
+        return 'EU: Europe';
+      } else if (firstOctet >= 192 && firstOctet <= 223) {
+        return 'AS: Asia';
+      }
+    }
+  } catch (error) {
+    console.log('⚠️ IP range fallback failed:', error.message);
+  }
+
   // Poslední fallback
   console.log('All IP geolocation services failed, using Unknown');
   return 'Unknown';
 }
 
-// Pomocná funkce pro HTTP requesty
+// Pomocná funkce pro HTTP requesty pomocí https modulu
 function makeHttpsRequest(url) {
   return new Promise((resolve, reject) => {
     const urlObj = new URL(url);
@@ -169,142 +144,97 @@ function makeHttpsRequest(url) {
   });
 }
 
-// Hlavní Lambda handler
 export const handler = async (event) => {
-  console.log('Event:', JSON.stringify(event, null, 2));
-
   try {
-    // Zpracování CORS preflight requestu
-    if (event.httpMethod === 'OPTIONS') {
-      return {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS'
-        },
-        body: ''
-      };
+    const body = typeof event.body === 'string' ? JSON.parse(event.body) : (event.body ?? {});
+    const { path } = body;
+
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+      return resp(500, { error: 'Chybí TELEGRAM_BOT_TOKEN nebo TELEGRAM_CHAT_ID v prostředí' });
     }
 
-    // Parsování těla požadavku
-    let body;
-    try {
-      body = JSON.parse(event.body);
-    } catch (error) {
-      console.error('Error parsing body:', error);
-      return {
-        statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS'
-        },
-        body: JSON.stringify({ error: 'Invalid JSON body' })
-      };
+    if (!path) {
+      return resp(400, { error: 'Missing path in request body' });
     }
 
-    // Získání IP adresy
-    const sourceIP = event.requestContext?.http?.sourceIp || 'Unknown';
-    console.log('Source IP:', sourceIP);
+    // Získat IP adresu volajícího z Lambda Function URL
+    const sourceIP = event.requestContext?.http?.sourceIp;
+    console.log(`Request from IP: ${sourceIP}`);
 
-    // Rozlišení typu požadavku
-    if (body.type === 'contact') {
-      // Zpracování kontaktního formuláře
-      const { name, email, phone, service, message } = body;
-      
-      // Formátování zprávy pro Telegram
-      const telegramMessage = `
-📧 <b>NOVÁ ZPRÁVA Z KONTAKTNÍHO FORMULÁŘE</b>
+    // Získat lokaci z IP adresy
+    let location = 'Unknown';
+    if (sourceIP) {
+      location = await getLocationFromIP(sourceIP);
+    }
 
-👤 <b>Jméno:</b> ${name}
-📧 <b>Email:</b> ${email}
-📞 <b>Telefon:</b> ${phone || 'Neuvedeno'}
-🎯 <b>Služba:</b> ${service || 'Neuvedeno'}
+    console.log(`Visit tracked - Path: ${path}, Location: ${location}, IP: ${sourceIP}`);
 
-💬 <b>Zpráva:</b>
-${message}
+    const message = `🧭 Nový uživatel webu z *${escapeMd(location)}* navštívil stránku _${escapeMd(path)}_`;
 
-🌍 <b>Lokace:</b> ${await getLocationFromIP(sourceIP)}
-🕐 <b>Čas:</b> ${new Date().toLocaleString('cs-CZ')}
-      `.trim();
+    const postData = JSON.stringify({
+      chat_id: TELEGRAM_CHAT_ID,
+      text: message,
+      parse_mode: 'Markdown',
+    });
 
-      await sendTelegramMessage(telegramMessage);
+    const options = {
+      hostname: 'api.telegram.org',
+      port: 443,
+      path: `/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(postData),
+      },
+    };
 
-      return {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS'
-        },
-        body: JSON.stringify({
-          success: true,
-          message: 'Kontaktní formulář byl úspěšně odeslán',
-          visitData: {
-            type: 'contact',
-            name,
-            email,
-            phone,
-            service,
-            message,
-            location: await getLocationFromIP(sourceIP),
-            sourceIP,
-            timestamp: new Date().toISOString()
+    const tgResponse = await new Promise((resolve, reject) => {
+      const req = https.request(options, (res) => {
+        const chunks = [];
+        res.on('data', (d) => chunks.push(d));
+        res.on('end', () => {
+          const body = Buffer.concat(chunks).toString('utf8');
+          if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
+            resolve({ ok: true, statusCode: res.statusCode, body });
+          } else {
+            reject(new Error(`Telegram API ${res.statusCode}: ${body}`));
           }
-        })
-      };
+        });
+      });
+      req.on('error', reject);
+      req.write(postData);
+      req.end();
+    });
 
-    } else {
-      // Zpracování návštěvy stránky (původní funkcionalita)
-      const { path } = body;
-      const location = await getLocationFromIP(sourceIP);
-
-      // Formátování zprávy pro Telegram
-      const telegramMessage = `
-🌐 <b>NOVÁ NÁVŠTĚVA WEBU</b>
-
-📍 <b>Stránka:</b> ${path}
-🌍 <b>Lokace:</b> ${location}
-🕐 <b>Čas:</b> ${new Date().toLocaleString('cs-CZ')}
-      `.trim();
-
-      await sendTelegramMessage(telegramMessage);
-
-      return {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'POST, OPTIONS'
-        },
-        body: JSON.stringify({
-          success: true,
-          message: 'Visit tracked successfully',
-          visitData: {
-            type: 'visit',
-            path,
-            location,
-            sourceIP,
-            timestamp: new Date().toISOString()
-          }
-        })
-      };
-    }
+    return resp(200, {
+      message: 'Zpráva odeslána na Telegram',
+      telegram: tgResponse,
+      visitData: {
+        path,
+        location,
+        sourceIP,
+        timestamp: new Date().toISOString()
+      }
+    });
 
   } catch (error) {
-    console.error('Error:', error);
-    return {
-      statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: JSON.stringify({
-        error: 'Internal server error',
-        message: error.message
-      })
-    };
+    console.error('Chyba:', error);
+    return resp(500, { error: 'Interní chyba serveru', detail: String(error?.message || error) });
   }
 };
+
+// Pomocné funkce
+function resp(statusCode, body) {
+  return {
+    statusCode,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body),
+  };
+}
+
+// Telegram Markdown (ne V2) – lehké escapování podtržítek/teček atd., ať se nerozbije formát
+function escapeMd(text = '') {
+  return String(text).replace(/([_*[\]()~`>#+\-=|{}.!\\])/g, '\\$1');
+}
