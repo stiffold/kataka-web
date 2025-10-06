@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
 
     try {
       // Odeslání přes naši Lambda funkci
-      const response = await fetch('YOUR_LAMBDA_URL', {
+      const response = await fetch('https://kjpumcusyt2gdtwo5kb3px6q6i0syqkc.lambda-url.eu-central-1.on.aws/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
