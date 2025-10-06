@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -25,39 +26,36 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Odeslání přes naši Lambda funkci
-      const response = await fetch('https://kjpumcusyt2gdtwo5kb3px6q6i0syqkc.lambda-url.eu-central-1.on.aws/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          type: 'contact',
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          service: formData.service,
-          message: formData.message,
-        }),
+      // EmailJS konfigurace - budete potřebovat tyto údaje z EmailJS
+      const templateParams = {
+        to_email: 'stara.katerina@gmail.com', // Váš email
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        reply_to: formData.email
+      };
+
+      // Zde budete potřebovat vaše EmailJS údaje
+      // SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY
+      await emailjs.send(
+        'service_50skgdh', // Nahraďte vaším Service ID
+        'template_exrhijb', // Nahraďte vaším Template ID
+        templateParams,
+        '34k5zd0-pV_42HHor' // Nahraďte vaším Public Key
+      );
+
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        console.log('Contact form sent successfully:', result);
-        setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: ''
-        });
-      } else {
-        throw new Error(result.message || 'Failed to send contact form');
-      }
     } catch (error) {
-      console.error('Chyba při odesílání kontaktního formuláře:', error);
+      console.error('Chyba při odesílání emailu:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
