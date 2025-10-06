@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -26,36 +25,39 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // EmailJS konfigurace - budete potřebovat tyto údaje z EmailJS
-      const templateParams = {
-        to_email: 'stara.katerina@gmail.com', // Váš email
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        message: formData.message,
-        reply_to: formData.email
-      };
-
-      // Zde budete potřebovat vaše EmailJS údaje
-      // SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY
-      await emailjs.send(
-        'service_50skgdh', // Nahraďte vaším Service ID
-        'template_exrhijb', // Nahraďte vaším Template ID
-        templateParams,
-        '34k5zd0-pV_42HHor' // Nahraďte vaším Public Key
-      );
-
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
+      // Odeslání přes naši Lambda funkci
+      const response = await fetch('YOUR_LAMBDA_URL', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'contact',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+        }),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        console.log('Contact form sent successfully:', result);
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        throw new Error(result.message || 'Failed to send contact form');
+      }
     } catch (error) {
-      console.error('Chyba při odesílání emailu:', error);
+      console.error('Chyba při odesílání kontaktního formuláře:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -123,7 +125,7 @@ const Contact: React.FC = () => {
                     <div>
                       <p className="text-sm text-gray-500">Působnost</p>
                       <p className="text-lg font-medium text-gray-900">
-                        Středočeský kraj, Jihočeský kraj, Vysočina
+                        Benešov, Bystřice, Příbram, Neveklov, Votice, Týnec nad Sázavou, Milevsko, Sedlec-Prčice, Petrovice, Dobříš, Kamýk nad Vltavou, Nový Knín, Mníšek pod Brdy, Štěchovice, Sedlčany
                       </p>
                     </div>
                   </div>
