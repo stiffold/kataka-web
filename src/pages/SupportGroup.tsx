@@ -5,12 +5,14 @@ const SupportGroup: React.FC = () => {
     <div className="py-24 bg-gradient-to-br from-primary-100 via-white to-secondary-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
-            Podpůrná skupinka
+          <h1 className="text-4xl md:text-5xl font-elegant font-light text-gray-800 mb-8">
+            <span className="bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 bg-clip-text text-transparent drop-shadow-lg">
+              Podpůrná skupinka
+            </span>
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-rose-400 to-pink-500 mx-auto rounded-full mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Sdílejte své zkušenosti a získejte podporu od ostatních maminek
+            Sdílejte své zkušenosti a získejte podporu od odborníků a ostatních maminek
           </p>
         </div>
 
@@ -44,19 +46,19 @@ const SupportGroup: React.FC = () => {
             <div className="bg-white rounded-3xl p-12 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-semibold text-gray-900 mb-6">
-                  Srdečně vás zveme na podpůrnou skupinku kojení
+                  Srdečně vás zveme na podpůrnou skupinku v mateřství
                 </h2>
               </div>
               
               <div className="space-y-8 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  Můžete se zde sdílet s ostatními ženami o starostech, ale i radostech na Vaší cestě mateřstvím.
+                  Můžete se zde sdílet s ostatními ženami o starostech, ale i radostech na vaší cestě mateřstvím.
                 </p>
                 <p>
                   Dozvíte se také zajímavé informace o kojení, uspávání dětí, příkrmech a mnoho dalšího.
                 </p>
                 <p>
-                  Skupinku vedu já a Michaela Švecová. Obě jsme duly a certifikované laktační poradkyně organizací MAMILA o.z.
+                  Skupinku vedu já (Kateřina Stará) a Michaela Švecová. Obě jsme duly a certifikované laktační poradkyně organizací MAMILA o.z.
                 </p>
                 <p className="text-center text-2xl font-semibold text-primary-600">
                   Děti jsou samozřejmě vítané! :)
@@ -95,14 +97,25 @@ const SupportGroup: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Kde</h3>
                 <p className="text-gray-600 mb-2">
-                  Komunitní centrum,
-                </p>
-                <p className="text-gray-600 mb-2">
-                  Komenského náměstí 44,
+                  Tyršova 1364,
                 </p>
                 <p className="text-2xl font-semibold text-primary-600">
                   Sedlčany
                 </p>
+                
+                {/* Google Map */}
+                <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2600.123456789!2d14.4264!3d49.6606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDM5JzM4LjIiTiAxNMKwMjUnMzUuMCJF!5e0!3m2!1scs!2scz!4v1234567890123!5m2!1scs!2scz"
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mapa - Tyršova 1364, Sedlčany"
+                  ></iframe>
+                </div>
               </div>
             </div>
 
@@ -129,8 +142,7 @@ const SupportGroup: React.FC = () => {
                 Náš cíl
               </h3>
               <p className="text-xl text-gray-700 text-center leading-relaxed">
-                Ženy ujistit a podpořit v kojení. Vytvořit bezpečné prostředí, kde se můžete svěřit se svými obavami 
-                a získat podporu od ostatních maminek i odborníků.
+                Chceme ženy podpořit v kojení a v péči o jejich děti. Vytváříme bezpečné prostředí, kde se můžete svěřit se svými obavami a získat podporu od odborníků i ostatních maminek.
               </p>
             </div>
           </div>

@@ -5,10 +5,12 @@ const Courses: React.FC = () => {
     <div className="py-24 bg-gradient-to-br from-primary-100 via-white to-secondary-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
-            Předporodní kurzy
+          <h1 className="text-4xl md:text-5xl font-elegant font-light text-gray-800 mb-8">
+            <span className="bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 bg-clip-text text-transparent drop-shadow-lg">
+              Předporodní kurzy
+            </span>
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-rose-400 to-pink-500 mx-auto rounded-full mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Zde najdete kurzy, které pro vás připravujeme.
           </p>

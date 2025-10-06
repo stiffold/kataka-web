@@ -91,10 +91,10 @@ const Header: React.FC = () => {
                 
                 {/* Text */}
                 <div className="flex flex-col">
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent group-hover:from-primary-700 group-hover:to-secondary-700 transition-all duration-300 leading-tight pb-1">
+                  <h1 className="text-3xl font-elegant font-light bg-gradient-to-r from-rose-400 via-pink-400 to-rose-500 bg-clip-text text-transparent group-hover:from-rose-500 group-hover:via-pink-500 group-hover:to-rose-600 transition-all duration-300 leading-tight pb-1 tracking-tight">
                     Kateřina Stará
                   </h1>
-                  <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300 font-medium leading-tight pb-0.5">
+                  <p className="text-base text-gray-500 group-hover:text-gray-600 transition-colors duration-300 font-body font-medium leading-tight pb-0.5 italic">
                     Porodní dula & Laktační poradkyně
                   </p>
                 </div>
@@ -103,73 +103,73 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-1">
+          <nav className="hidden md:flex space-x-2">
             <Link 
               to="/" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               Úvod
             </Link>
             <Link 
               to="/o-mne" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/o-mne') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               O mně
             </Link>
             <Link 
               to="/sluzby" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/sluzby') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               Služby
             </Link>
             <Link 
               to="/cenik" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/cenik') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               Ceník
             </Link>
             <Link 
               to="/podpurna-skupinka" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/podpurna-skupinka') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               Podpůrná skupinka
             </Link>
             <Link 
               to="/kurzy" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/kurzy') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               Kurzy
             </Link>
             <Link 
               to="/kontakt" 
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              className={`px-6 py-3 text-lg font-body font-semibold rounded-xl transition-all duration-200 ${
                 isActive('/kontakt') 
-                  ? 'text-primary-600 bg-primary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
             >
               Kontakt
@@ -200,10 +200,10 @@ const Header: React.FC = () => {
           <div className="px-4 pt-3 pb-4 space-y-1 bg-white/95 backdrop-blur-sm border-t border-gray-100/50 shadow-soft">
             <Link 
               to="/" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
@@ -211,10 +211,10 @@ const Header: React.FC = () => {
             </Link>
             <Link 
               to="/o-mne" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/o-mne') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
@@ -222,10 +222,10 @@ const Header: React.FC = () => {
             </Link>
             <Link 
               to="/sluzby" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/sluzby') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
@@ -233,10 +233,10 @@ const Header: React.FC = () => {
             </Link>
             <Link 
               to="/cenik" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/cenik') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
@@ -244,10 +244,10 @@ const Header: React.FC = () => {
             </Link>
             <Link 
               to="/podpurna-skupinka" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/podpurna-skupinka') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
@@ -255,10 +255,10 @@ const Header: React.FC = () => {
             </Link>
             <Link 
               to="/kurzy" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/kurzy') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
@@ -266,10 +266,10 @@ const Header: React.FC = () => {
             </Link>
             <Link 
               to="/kontakt" 
-              className={`block px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105 ${
+              className={`block px-6 py-4 text-lg font-body font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 ${
                 isActive('/kontakt') 
-                  ? 'text-primary-600 bg-gradient-to-r from-primary-50 to-secondary-50 shadow-soft' 
-                  : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50/80'
+                  ? 'text-rose-500 bg-gradient-to-r from-rose-50 to-pink-50 shadow-soft border border-rose-200' 
+                  : 'text-gray-700 hover:text-rose-500 hover:bg-gradient-to-r hover:from-gray-50 hover:to-rose-50'
               }`}
               onClick={closeMenu}
             >
