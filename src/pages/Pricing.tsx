@@ -172,7 +172,7 @@ const Pricing: React.FC = () => {
 
             <div className="group">
               <div className="bg-white rounded-3xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Pohotovost držím 24/7</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Pohotovost k porodu</h3>
                 <div className="text-4xl font-bold text-primary-600 mb-6">3500,- Kč</div>
                 <ul className="text-gray-600 space-y-3">
                   <li className="flex items-center">
