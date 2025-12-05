@@ -123,7 +123,7 @@ const Contact: React.FC = () => {
                     <div>
                       <p className="text-sm text-gray-500">Působnost</p>
                       <p className="text-lg font-medium text-gray-900">
-                        Benešov, Bystřice, Příbram, Neveklov, Votice, Týnec nad Sázavou, Milevsko, Sedlec-Prčice, Petrovice, Dobříš, Kamýk nad Vltavou, Nový Knín, Mníšek pod Brdy, Štěchovice, Sedlčany
+                        Sedlčany, Benešov, Bystřice, Příbram, Neveklov, Votice, Týnec nad Sázavou, Milevsko, Sedlec-Prčice, Petrovice, Dobříš, Kamýk nad Vltavou, Nový Knín
                       </p>
                     </div>
                   </div>

@@ -116,14 +116,21 @@ const Hero: React.FC = () => {
           <div className="group relative">
             <div className="relative">
               {/* Main photo with soft shadow and rounded corners */}
-              <div className="relative overflow-hidden rounded-3xl shadow-soft-lg group-hover:shadow-soft-xl transition-all duration-300 transform group-hover:-translate-y-2">
+              <div className="relative overflow-hidden rounded-3xl shadow-soft-lg group-hover:shadow-soft-xl transition-all duration-300 transform group-hover:-translate-y-2 group-hover:scale-[1.02]">
                 <img 
                   src="/images/9.png" 
                   alt="Těhotná žena v přírodě - symbol nového života a mateřství"
-                  className="w-96 h-96 object-cover"
+                  className="w-96 h-96 object-cover transition-all duration-500 group-hover:brightness-110 group-hover:contrast-105 group-hover:saturate-110"
+                  style={{
+                    filter: 'brightness(1.05) contrast(1.1) saturate(1.1)',
+                  }}
                 />
-                {/* Gradient overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                {/* Enhanced gradient overlays for depth and warmth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-200/10 via-transparent to-pink-200/10"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-rose-100/5"></div>
+                {/* Soft glow effect */}
+                <div className="absolute inset-0 ring-2 ring-rose-200/20 rounded-3xl"></div>
               </div>
               
               {/* Decorative elements */}

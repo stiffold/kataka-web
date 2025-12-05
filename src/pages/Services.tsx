@@ -15,6 +15,7 @@ const Services: React.FC = () => {
 
   const prenatalTopics = [
     "Relaxační techniky (masáže, rebozo, nácvik úlevových poloh), které ráda v případě zájmu naučím i partnera.",
+    "Dýchání při porodu",
     "Tipy jak přirozeně vyvolat porod, jak rozpoznat začátek porodu",
     "Informace o průběhu vaginálního porodu, porodu císařským řezem, porodu koncem pánevním či VBAC",
     "Polohy ženy při porodu",
@@ -128,7 +129,7 @@ const Services: React.FC = () => {
             <div className="bg-white rounded-3xl p-12 shadow-soft hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
               <h2 className="text-4xl font-bold text-gray-900 mb-8">PŘEDPORODNÍ PŘÍPRAVA</h2>
               <p className="text-xl text-gray-600 mb-8">
-                Probíhá ve 2 schůzkách, každá trvá cca 2 hodiny. V porodním balíčku je navíc příprava na kojení (1,5 hod.).
+                Sama si můžete určit, jak dlouho bude trvat. Dopředu se domluvíme, co je pro Vás důležité vědět. Díky tomu Vám přípravu přichystám namíru. V porodním balíčku jsou celkem 4 hodiny předporodních příprav.
               </p>
               <p className="text-xl text-gray-600 mb-8">
                 Témata přípravy:

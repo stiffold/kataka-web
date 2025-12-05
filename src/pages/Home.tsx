@@ -190,7 +190,7 @@ const Home: React.FC = () => {
                 </p>
                 <div className="bg-gradient-to-r from-pink-100/70 to-rose-100/70 rounded-2xl p-6 border border-pink-200/50">
                   <p className="text-gray-800 font-body font-semibold leading-relaxed text-lg">
-                    Benešov, Bystřice, Příbram, Neveklov, Votice, Týnec nad Sázavou, Milevsko, Sedlec-Prčice, Petrovice, Dobříš, Kamýk nad Vltavou, Nový Knín, Mníšek pod Brdy, Štěchovice, Sedlčany, Hořovice, Tábor
+                    Sedlčany, Benešov, Bystřice, Příbram, Neveklov, Votice, Týnec nad Sázavou, Milevsko, Sedlec-Prčice, Petrovice, Dobříš, Kamýk nad Vltavou, Nový Knín
                   </p>
                 </div>
               </div>

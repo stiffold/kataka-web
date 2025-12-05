@@ -2,7 +2,7 @@ import React from 'react';
 
 const About: React.FC = () => {
   const qualifications = [
-    "Porodní dula-absolventka u České asociace dul (ČAD)",
+    "Certifikovaná porodní dula u České asociace dul (ČAD)",
     "Certifikovaná laktační poradkyně o.z. MAMILA (od ledna 2023)",
     "Vystudovaná střední a vyšší zdravotnická škola",
     "Zkušenosti z porodních sálů a oddělení šestinedělí"
@@ -71,7 +71,7 @@ const About: React.FC = () => {
                     Vystudovala jsem střední a vyšší zdravotnickou školu. Už při studiu jsem byla nejraději na porodních sálech a na oddělení šestinedělí :)
                   </p>
                   <p>
-                    Nyní jsem porodní dula-absolventka u České asociace dul (ČAD), jsem tedy dula v zácviku a výhodou pro Vás je nižší cena této služby.
+                    Jsem certifikovaná porodní dula u České asociace dul (ČAD).
                   </p>
                   <p>
                     Od ledna 2023 jsem certifikovaná laktační poradkyně o.z. MAMILA. Tato práce mě velmi baví a naplňuje.
